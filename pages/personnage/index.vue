@@ -5,7 +5,7 @@
     <div class="row gx-5">
       <div class="col-md-4" v-for="(perso, index) in personnages" :key="index">
         <div class="p-3">
-          <div class="card bg-dark" style="width: 18rem; border-color: #fbb040;">
+          <div class="card bg-dark" style="width: 18rem;">
             <img :src="perso.personnageImage" class="card-img-top" />
             <div class="card-body">
               <h5 class="card-title text-warning">{{ perso.name }}</h5>
@@ -63,19 +63,19 @@ export default {
 h1{
   color: rgb(195, 255, 0);
   font-family: 'Star Wars', sans-serif;
-  text-align: center;
   padding: 30px;
 }
 
 .card {
-  border: none;
+  border: solid #220353 3px;
   box-shadow: 0 0 20px #ffd700;
+  border-radius: 10px;
 }
 
 .card-title,
 .card-text {
   color: rgb(195, 255, 0);
-  font-family: 'Star Wars', sans-serif;
+  font-weight: bold;
 }
 
 .card-body {

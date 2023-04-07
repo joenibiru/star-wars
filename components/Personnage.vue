@@ -1,31 +1,111 @@
 <template>
-    <div class="container px-4 text-center">
-      <div class="row gx-5">
-        <div class="col-md-4">
-          <div class="p-3">
-            <div class="card bg-dark" style="width: 18rem; border-color: #fbb040;">
-              <img src="" class="card-img-top">
-              <div class="card-body">
-                <h5 class="card-title text-warning">{{ name }}</h5>
-                <p class="card-text text-white">Le vaisseau le plus rapide de la galaxie, capable de parcourir des distances
-                  interstellaires en un rien de temps.</p>
-                <a href="/personnage/slug" class="btn btn-warning">Explorer</a>
-              </div>
-            </div>
-          </div>
-        </div>
+  <div class="card_perso bg-dark">
+    <div class="card--img">
+      <img :src="image" :alt="name">
+    </div>
+    <div class="card--text">
+      <h1>{{ name }}</h1>
+      <NuxtLink :to="{
+        name: 'personnage-slug',
+        params: { slug: name.toLowerCase().replace(/ /g, '-') }
+      }" class="btn-explore">
+        Explorer
+      </NuxtLink>
     </div>
   </div>
-  </template>
-  
-  <script>
-  
-  export default {
-    props: {
-      name: {
-        type: String,
-        required: true
-        }
+</template>
+
+<script>
+
+export default {
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      required: true
     }
   }
-  </script>
+}
+</script>
+
+<style scoped>
+.card_perso {
+  display: flex;
+  flex-direction: column;
+  border: solid #220353 3px;
+  box-shadow: 0 0 20px #ffd700;
+  width: 300px;
+  height: 400px;
+  padding: 15px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.card--img {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.card--img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.card--text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background-color: rgba(34, 3, 83, 0.8);
+}
+
+.card--text h1 {
+  font-size: 24px;
+  color: #ffd700;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.card--text p {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+
+.btn-explore {
+  background-color: #fbb040;
+  border: none;
+  color: #220353;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-explore:hover {
+  background-color: #ffd700;
+  color: #220353;
+}
+
+</style>

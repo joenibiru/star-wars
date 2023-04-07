@@ -103,5 +103,6 @@
 .logo {
 	opacity: 50%;
 	padding-right: 20px;
+	margin-left: 50px;
 }
 </style>

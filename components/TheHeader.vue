@@ -1,24 +1,24 @@
 <template>
-  <header>
+  <header class="bg-dark">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-2">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-12 col-md-2 order-md-3">
           <Logo />
         </div>
-        <div class="col-2">
-          <NuxtLink to="/personnage" class="text-decoration-none">Personnages</NuxtLink>
+        <div class="category col-12 col-md-6 d-flex justify-content-center justify-content-md-start order-md-2">
+          <NuxtLink to="/personnage" class="nav-link ">Personnages</NuxtLink>
+          <NuxtLink to="/planetes" class="nav-link ">Planetes</NuxtLink>
+          <NuxtLink to="/vaisseaux" class="nav-link ">Vaisseaux</NuxtLink>
+          <NuxtLink to="/vehicules" class="nav-link ">Vehicules</NuxtLink>
+          <NuxtLink to="/especes" class="nav-link ">Especes</NuxtLink>
         </div>
-        <div class="col-2">
-          <NuxtLink to="/planetes" class="text-decoration-none">Planetes</NuxtLink>
-        </div>
-        <div class="col-2">
-          <NuxtLink to="/vaisseaux" class="text-decoration-none">Vaisseaux</NuxtLink>
-        </div>
-        <div class="sabre">
-          <img src="~assets/images/star-wars-sabe.png" alt="sabre laser" width="500px" @mouseover="playSound"  >
-        </div>
-        <div class="sabre_laser">
-          <img src="~assets/images/star-wars-sabre laser.png" alt="sabre laser" width="500px" @mouseover="playSound"  >
+        <div class="col-12 col-md-3 d-flex sabre-container position-relative">
+          <div class="sabre position-absolute top-0 start-50 translate-middle" style="transform: rotate(45deg);">
+            <img src="~assets/images/star-wars-sabe.png" alt="sabre laser" width="200px" @mouseover="playSound">
+          </div>
+          <div class="sabre_laser position-absolute top-0 start-50 translate-middle" style="transform: rotate(-45deg);">
+            <img src="~assets/images/star-wars-sabre laser.png" alt="sabre laser" width="200px" @mouseover="playSound">
+          </div>
         </div>
       </div>
     </div>
@@ -43,18 +43,28 @@ export default {
 <style scoped>
 header {
   background-image: url(~assets/images/a9ac4e5ef98fb5e554a9faa4f548749e.jpg);
-}
-.sabre_laser{
-  margin-left: 140px;
-  
+  position: relative;
 }
 
-
-header a {
-  font-family: 'Star Wars', sans-serif;
+.sabre-container {
+  height: 100px;
 }
 
-header a:hover {
-  color: #ffd700;
+.sabre,
+.sabre_laser {
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .nav-link {
+    font-size: 14px;
+    color: rgb(195, 255, 0);
+    font-family: 'Star Wars', sans-serif;
+  }
+}
+.category{
+
+  margin-right: 100px;
 }
 </style>
+

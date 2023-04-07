@@ -12,9 +12,13 @@
       </div>
     </div>
   </template>
-  
   <script>
+  import Planete from '~/components/Planetes.vue';
+  
   export default {
+    components: {
+      Planete,
+    },
     data() {
       return {
         planetes: [],
@@ -40,32 +44,6 @@
         planete.image = image;
       });
     },
-    components: {
-      Planete: {
-        props: ["planete"],
-        template: `
-          <div class="col-md-4">
-            <div class="p-3">
-              <div class="card bg-dark" style="width: 18rem; border-color: #fbb040;">
-                <img :src="planete?.image" class="card-img-top" />
-                <div class="card-body">
-                  <h5 class="card-title text-warning">{{ planete.name }}</h5>
-                  <NuxtLink
-                    :to="{
-                      name: 'planete-slug',
-                      params: { slug: planete.name.toLowerCase().replace(/ /g, '-') },
-                    }"
-                    class="btn btn-warning"
-                  >
-                    Explorer
-                  </NuxtLink>
-                </div>
-              </div>
-            </div>
-          </div>
-        `,
-      },
-    },
   };
   </script>
   <style scoped>
@@ -77,9 +55,6 @@
   .planetes {
     width: 100%;
     background-image: url("~assets/images/a9ac4e5ef98fb5e554a9faa4f548749e.jpg");
-    background-repeat: repeat;
-    background-color: transparent;
-    background-position: center;
   }
   
   .card_content {

@@ -59,5 +59,15 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  router: {
+    fallback: true,
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: '404',
+        path: '*',
+        component: resolve('~/layouts/erreur.vue')
+      })
+    }
   }
 }
